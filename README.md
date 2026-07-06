@@ -36,19 +36,28 @@
 2. Dentro del flow.yml pegar el script
 
 3. Debes crear aplicar los ajustes necesarios
-      
+
+<br/> 
+<img width="635" height="180" alt="image" src="https://github.com/user-attachments/assets/3c7df5aa-bb92-4b9c-9d41-bc13397efa6f" />
+
 ```
-❌ Mal (no si es para - de 2 ramas/items)
-    branches: [main]
+- Ve a Settings → Pages
+```
 
----
+<br/>
+<img width="887" height="571" alt="image" src="https://github.com/user-attachments/assets/4d6eb894-efe9-45d3-a2e2-3e79137979c5" />
 
-✅ Bien (ideal si es para + de 2 ramas/items)
-    branches:
-        - main
+```
+- Da click en Pages
+```
 
-Link del minify
-https://github.com/terser/html-minifier-terser
+<br/>
+<img width="902" height="572" alt="image" src="https://github.com/user-attachments/assets/10f29fb4-a736-461e-9eec-10e497810caf" />
+
+```
+- En "Build and deployment" → Source:cambia "Deploy from a branch" por "Github Actions"
+- Guarda. En 1-2 min tendrás la URL: https://TU_USUARIO.github.io/mi-sitio/
+- Recuerda siempre sobre la Branch: main y carpeta / (root)
 ```
 
 <br/>
