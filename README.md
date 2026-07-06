@@ -33,10 +33,14 @@
 
 1. Crear un directorio el archivo deploy.yml en un repositorio
 
-2. Dentro del flow.yml pegar el script
+2. Dentro del deploy.yml pegar el script 
 
-3. Debes crear aplicar los ajustes necesarios
-
+3. Debes crear aplicar los ajustes necesarios en settings del repositorio y no de la cuenta
+  
+4. Tomar el script del html y copiarlo en index.html
+   
+5. Haces varios cambios acompañado de push, para verificar el deploy ordenado desde Github Actions funciona  
+   
 <br/> 
 <img width="635" height="180" alt="image" src="https://github.com/user-attachments/assets/3c7df5aa-bb92-4b9c-9d41-bc13397efa6f" />
 
@@ -80,7 +84,7 @@
 ```
 
 <br/>
-🟢 Script github/actions del hack-1 a resolver 🟢
+🟢 Script github/actions del hack-1 🟢
 
 ```
 name: Deploy to GitHub Pages
