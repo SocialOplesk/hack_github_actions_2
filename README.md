@@ -59,9 +59,33 @@
 <img width="902" height="572" alt="image" src="https://github.com/user-attachments/assets/10f29fb4-a736-461e-9eec-10e497810caf" />
 
 ```
+
 - En "Build and deployment" → Source:cambia "Deploy from a branch" por "Github Actions"
 - Guarda. En 1-2 min tendrás la URL: https://TU_USUARIO.github.io/mi-sitio/
 - Recuerda siempre sobre la Branch: main y carpeta / (root)
+
+---
+# Evita race conditions: si haces dos pushes seguidos, no se ejecutan dos deploys en paralelo pisándose. 
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+---
+ # Sube al storage de Actions
+
+- uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+```
+
+<br/>
+
+```
+- contents: read → puede leer el código del repo (checkout)
+- pages:    write → puede publicar en GitHub Pages
+- id-token: write → autenticación sin secretos
 ```
 
 <br/>
