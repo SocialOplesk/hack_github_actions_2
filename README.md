@@ -13,7 +13,7 @@
 
 ```diff
 - NOTA HACER LAS PRÁCTICAS MEDIANTE LA CONSOLA - TERMINAL  
-- Debes tener cuenta en vercel y usar la terminal de wsl en caso de emplear windows, ideal sobre debian / ubuntu / fedora.
+- Debes tener cuenta en github y usar la terminal de wsl en caso de emplear windows, ideal sobre debian / ubuntu / fedora.
 ```
 |Hacks | Details | 
 |----------|---------|
