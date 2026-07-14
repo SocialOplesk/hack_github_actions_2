@@ -390,10 +390,24 @@ export default defineConfig({
 
 ---
 
-<img width="927" height="203" alt="image" src="https://github.com/user-attachments/assets/22aa97a0-59d5-430b-9332-accdf38687fd" />
+<img width="1032" height="652" alt="image" src="https://github.com/user-attachments/assets/03de49ed-ed2e-4d82-8451-c6cdcb5047a6" />
+
 
 ```
- Al ejecutar el workflow debes tener 3 jobs en el dashboard de actions
+
+Las 3 tareas(jobs) se han completado con éxito. Ya puedes revisar los resultados con una web similar
+ 
+```
+
+---
+
+<img width="927" height="203" alt="image" src="https://github.com/user-attachments/assets/22aa97a0-59d5-430b-9332-accdf38687fd" />
+
+
+```
+
+Al ejecutar el workflow, verás 3 tareas (jobs) activas en el panel de Actions.
+
 ```
 
 <br/>
