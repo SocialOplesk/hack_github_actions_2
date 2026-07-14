@@ -327,7 +327,9 @@ jobs:
 ```
 # Clonar el repositorio de la app creada en react, es un simple boilerplate
 
-  git clone
+  url del repo:  https://github.com/SocialOplesk/hack_github_actions_2_react_boilerplate
+
+  git clone https://github.com/SocialOplesk/hack_github_actions_2_react_boilerplate.git 
 
 ---
 # Buscar el archivo vite.config.js y anexar el nombre del repo origin que creaste,
@@ -367,14 +369,22 @@ export default defineConfig({
 # Artefacto de Build, a tomar es el directorio "dist", se crea cuando se ejecuta el step:
 
   - name: Build de producción
-     run: npm run build  -> crea el directorio dist / aplica minify y con el performance necesario para su deploy
+     run: npm run build  -> crea el directorio dist / aplica minify, con el performance clave para deploy
 
 
   - name: Subir artefacto de build
     uses: actions/upload-pages-artifact@v3
     with:
-       path: 'dist'    -> se marca el directorio dist como directorio de despligue
+       path: 'dist'  -> se marca el directorio dist como directorio de despligue
 
+```
+
+---
+
+<img width="927" height="203" alt="image" src="https://github.com/user-attachments/assets/22aa97a0-59d5-430b-9332-accdf38687fd" />
+
+```
+ Al ejecutar el workflow debes tener 3 jobs en el dashboard de actions
 ```
 
 <br/>
