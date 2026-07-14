@@ -395,7 +395,7 @@ export default defineConfig({
 
 ```
 
-Las 3 tareas(jobs) se han completado con éxito. Ya puedes revisar los resultados con una web similar
+Las 3 tareas(jobs) se han completado con éxito. Ya puedes revisar los resultados con una web similar.
  
 ```
 
