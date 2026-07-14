@@ -18,6 +18,7 @@
 |Hacks | Details | 
 |----------|---------|
 | H-1      | deploy index.html |
+| H-2      | deploy con 2 jobs |
 
 <br/> 
 
@@ -66,6 +67,12 @@
 
 ---
 # Evita race conditions: si haces dos pushes seguidos, no se ejecutan dos deploys en paralelo pisándose. 
+  adicional en la clave group: "pages" el nombre  puede ser cualquier cosa, lo importante es identificar
+  el group con la plataforma a donde se hace deploy para un mejor orden ejemplo:
+  - group: "aws"
+  - group: "pages"
+  - group: "vercel"
+  - group: "cloudflare"
 
 concurrency:
   group: "pages"
@@ -123,7 +130,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "❓"
   cancel-in-progress: false
 
 jobs:
@@ -222,7 +229,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "❓"
   cancel-in-progress: false
 
 jobs:
@@ -234,7 +241,7 @@ jobs:
 
       - name: Validar estructura del sitio
         run: |
-          test -f index.html || (echo "::error::No existe index.html en la raíz" && exit ❓)
+          test -f ❓.html || (echo "::error::No existe index.html en la raíz" && exit ❓)
           echo "index.html encontrado, validación básica OK"
 
       - name: Configurar Pages
