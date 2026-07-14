@@ -19,6 +19,7 @@
 |----------|---------|
 | H-1      | deploy index.html |
 | H-2      | deploy con 2 jobs |
+| H-3      | deploy con 3 jobs + react |
 
 <br/> 
 
@@ -158,6 +159,7 @@ jobs:
 
 <br />
 <br /> 
+<br /> 
 
 ## 🏆 H-2
 
@@ -192,7 +194,8 @@ jobs:
 ```
 - Debe mostrar 2 jobs en el dashboard de actions de github actions
 - Se divide en 2 jobs para asi dividir las tareas una de CI y otra de CD 
-- Esto indica que una tarea pasa a otra mediante el step del artefacto: "Subir artefacto para Pages"
+- Esto indica que una tarea pasa a otra mediante el step del artefacto:
+  "Subir artefacto para Pages"
 
 - name: Subir artefacto para Pages
         uses: actions/upload-pages-artifact@v3
@@ -202,8 +205,11 @@ jobs:
 ---
 # La palabra clave needs
 
-Indica que un trabajo actual no puede empezar hasta que el trabajo del que depende haya terminado con éxito.
-integration: Es simplemente el nombre de otra tarea(job) previa (por ejemplo, una fase de pruebas de integración).
+Indica que un trabajo actual no puede empezar hasta que el trabajo del que depende
+haya terminado con éxito.
+
+integration: Es simplemente el nombre de otra tarea(job) previa (por ejemplo, una
+fase de pruebas de integración).
 
 -  deploy:
     needs: integration
@@ -264,6 +270,63 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
+<br />
+<br /> 
+<br/> 
+
+## 🏆 H-3 
+
+```
+
+📁hack_gh_3/
+├── .github/workflows/deploy.yml
+├── package.json
+├── vite.config.js
+├── index.html
+└── src/
+    ├── main.jsx
+    └── App.jsx
+
+```
+
+<img width="1160" height="558" alt="image" src="https://github.com/user-attachments/assets/8ca5062f-c642-46e4-ab00-4e9890b9d90d" />
+
+
+```
+# Instalar "fnm" (Fast Node Manager) en Ubuntu / Debian - https://github.com/Schniz/fnm
+
+ si instalas Node.js directamente con apt, los archivos globales y la carpeta de npm se configuran 
+ bajo permisos de administrador (root).  El problema: Cuando intentes instalar librerías globales 
+ (como npm install -g <paquete>), la terminal te dará un error de permisos denegados y te obligará
+ a usar sudo.
+
+ el peligro: Ejecutar código de paquetes de terceros con sudo es un riesgo enorme de seguridad.
+ Con fnm  Node.js se instala en tu carpeta de usuario local, por lo que nunca más tendrás que usar
+ sudo para instalar nada de Node.   
+
+
+1  Para instalar "fnm" verifica antes si tienes curl y unzip, para conocer si lo tienes instalados
+   emplear el comando "which"
+ 
+   which curl  ->  /usr/bin/curl  // curl se encuentra instalado
+   which unzip ->  /usr/bin/unzip // unzip se encuentra instalado
+
+
+   En caso de regresar curl o unzip -> "not found" hacer lo siguiente:
+
+   sudo apt update -y
+   sudo apt install curl -y   //instalar si regresa not found al hacer -> which curl
+   sudo apt install unzip -y  //instalar si regresa not found al hacer -> which unzip
+
+2. ---
+
+3. Local, antes de subir a GitHub:
+   cd react-simple-pages 
+   npm install
+   npm run dev     
+```
+
+<br/>
 
 ---
 <h3 align="center">SOCIAL OPLESK</h3>
