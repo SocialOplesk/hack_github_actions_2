@@ -133,7 +133,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
+      - name: Clonar reporitorio / Descargar repositorio
         uses: actions/checkout@v7
 
       - name: Setup Pages
@@ -150,6 +150,112 @@ jobs:
 ```
 
 <br />
+<br /> 
+
+## 🏆 H-2
+
+```
+
+📁hack_gh_2/
+├── .github/workflows/deploy.yml
+├── index.html
+
+```
+1. Crear un directorio el archivo deploy.yml en un repositorio
+
+2. Dentro del deploy.yml pegar el script 
+
+3. Debes crear aplicar los ajustes necesarios en settings del repositorio para activar github pages
+  
+4. Tomar el script del html y copiarlo en index.html
+
+5. El comando "test -f index.html" verifica que el archivo existe la flag "-f" quiere decir file <br/>
+   test -f archivo devuelve código de salida 0 si el archivo existe y es un archivo regular, 1 si no. <br/>
+   Si falla (||), imprime error con el prefijo ::error:: (sintaxis que GitHub Actions reconoce para resaltarlo en rojo)
+
+  <img width="683" height="140" alt="image" src="https://github.com/user-attachments/assets/cb2abef2-ea0f-4a54-a3a6-ada84177e002" />
+  
+
+<br/>
+
+---
+
+<img width="613" height="150" alt="image" src="https://github.com/user-attachments/assets/6631f4de-f25b-47e5-8e8a-b06f595ec9db" />
+
+```
+- Debe mostrar 2 jobs en el dashboard de actions de github actions
+- Se divide en 2 jobs para asi dividir las tareas una de CI y otra de CD 
+- Esto indica que una tarea pasa a otra mediante el step del artefacto: "Subir artefacto para Pages"
+
+- name: Subir artefacto para Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+---
+# La palabra clave needs
+
+Indica que un trabajo actual no puede empezar hasta que el trabajo del que depende haya terminado con éxito.
+integration: Es simplemente el nombre de otra tarea(job) previa (por ejemplo, una fase de pruebas de integración).
+
+-  deploy:
+    needs: integration
+    runs-on: ubuntu-latest
+```
+
+---
+<br/>
+
+🟢 Script github/actions del hack-2 🟢
+
+```
+name: ❓
+
+on:
+  push:
+    branches: [❓]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  integration:
+    runs-on: ❓
+    steps:
+      - name: Clonar reporitorio / Descargar repositorio
+        uses: actions/❓
+
+      - name: Validar estructura del sitio
+        run: |
+          test -f index.html || (echo "::error::No existe index.html en la raíz" && exit ❓)
+          echo "index.html encontrado, validación básica OK"
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir artefacto para Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  deploy:
+    needs: ❓
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy a GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
 
 
 ---
