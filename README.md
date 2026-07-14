@@ -305,7 +305,7 @@ jobs:
  sudo para instalar nada de Node.   
 
 
-1  Para instalar "fnm" verifica antes si tienes curl y unzip, para conocer si lo tienes instalados
+-  Para instalar "fnm" verifica antes si tienes curl y unzip, para conocer si lo tienes instalados
    emplear el comando "which"
  
    which curl  ->  /usr/bin/curl  // curl se encuentra instalado
@@ -317,14 +317,151 @@ jobs:
    sudo apt update -y
    sudo apt install curl -y   //instalar si regresa not found al hacer -> which curl
    sudo apt install unzip -y  //instalar si regresa not found al hacer -> which unzip
-
-2. ---
-
-3. Local, antes de subir a GitHub:
-   cd react-simple-pages 
-   npm install
-   npm run dev     
+   verificar con "which" si ahora tienes curl y unzip o la app que no tenias.
+   
 ```
+
+---
+
+
+```
+# Clonar el repositorio de la app creada en react, es un simple boilerplate
+
+  git clone
+
+---
+# Buscar el archivo vite.config.js y anexar el nombre del repo origin que creaste,
+  regla simple: base es siempre /nombre-del-repo/ nada más.
+  - No lleva: github.com/
+  - No lleva: tu usuario
+  - No lleva: https://
+
+  En tu vite.config.js, el base tiene que coincidir exactamente con el nombre del repo,
+  con eso, el build genera un despliegue correcto, sino falla el deploy, muestra una pagina en blanco.
+
+  //base: '/github.com/foo/hack_gh_3/'   // ❌ 
+  //base: '/hack_gh_3/'                  // ✅ 
+
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  base: '/nombre-del-repositorio/'  ->  '/hack_gh_3/
+})
+
+---
+# Eliminar el .git luego apuntar al repo origin personal del hack, que creaste para el hack-3
+
+  git init
+  git remote add origin <ruta.git>
+  git status
+  git add .
+  git commit -m "mensaje-personalizado"
+
+  recuerda verificar la rama local, chequear que subes directo al ambiente main 
+
+---
+# Artefacto de Build, a tomar es el directorio "dist", se crea cuando se ejecuta el step:
+
+  - name: Build de producción
+     run: npm run build  -> crea el directorio dist / aplica minify y con el performance necesario para su deploy
+
+
+  - name: Subir artefacto de build
+    uses: actions/upload-pages-artifact@v3
+    with:
+       path: 'dist'    -> se marca el directorio dist como directorio de despligue
+
+```
+
+<br/>
+
+🟢 Script github/actions del hack-3 🟢
+
+```
+name: ❓
+
+on:
+  push:
+    branches: [❓]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "❓"
+  cancel-in-progress: false
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Tests
+        run: npm test --if-present -- --watchAll=false
+
+  build:
+    needs: integration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/❓
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: '❓'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Build de producción
+        run: npm run ❓
+        env:
+          CI: true
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir artefacto de build
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '❓'  
+
+  deploy:
+    needs: ❓
+    runs-on: ❓
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy a GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+
 
 <br/>
 
