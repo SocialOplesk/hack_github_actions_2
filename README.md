@@ -378,7 +378,7 @@ export default defineConfig({
 # Artefacto de Build, a tomar es el directorio "dist", se crea cuando se ejecuta el step:
 
   - name: Build de producción
-     run: npm run build  -> crea el directorio dist / aplica minify, con el performance clave para deploy
+     run: npm run build  -> crea el directorio dist / aplica minify, con performance clave para deploy
 
 
   - name: Subir artefacto de build
