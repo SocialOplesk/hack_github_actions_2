@@ -289,6 +289,15 @@ jobs:
 
 ```
 
+1. La estructura de directorios y archivos esta en el repositorio
+   url https://github.com/SocialOplesk/hack_github_actions_2_react_boilerplate
+
+2. El repo con la app de react, lo debes descargar en local
+
+3. Abajo inicia la diversión      
+   
+<br/> 
+
 <img width="1160" height="558" alt="image" src="https://github.com/user-attachments/assets/8ca5062f-c642-46e4-ab00-4e9890b9d90d" />
 
 
